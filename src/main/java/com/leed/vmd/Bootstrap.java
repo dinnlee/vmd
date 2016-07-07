@@ -19,7 +19,8 @@ public class Bootstrap
 
         get( "/hello", ( req, res ) -> "Hello World" );
 
-        post( "/complete-form", "application/json", ( request, response ) -> formService.complete( request.body() ),
+        post( "/complete-form", "application/json", ( request, response ) -> formService
+                        .complete( request.params( "g-recaptcha-response" ), request.body() ),
                 new JsonTransformer() );
     }
 

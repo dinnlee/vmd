@@ -27,6 +27,7 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.SheetsScopes;
 import com.google.api.services.sheets.v4.model.ValueRange;
+import com.leed.vmd.data.Registration;
 
 public class FormService
 {
@@ -103,15 +104,9 @@ public class FormService
         trustEveryone();
 
         // Build a new authorized API client service.
-        Sheets service = getSheetsService();
+        final Sheets service = getSheetsService();
 
-        // https://docs.google.com/spreadsheets/d/1HEOCsUkt-5GDzT-1sHevz2YmM0nSUIpB19C0VJA2M0Q/edit#gid=0
-        final String spreadsheetId = "1HEOCsUkt-5GDzT-1sHevz2YmM0nSUIpB19C0VJA2M0Q";
-        final String range = "Registrations!A2:B30";
-
-        final ValueRange response = service.spreadsheets().values()
-                .get( spreadsheetId, range )
-                .execute();
+        final ValueRange response = service.spreadsheets().values().get( spreadsheetId, range ).execute();
         List<List<Object>> values = response.getValues();
         if ( values == null || values.size() == 0 )
         {
@@ -136,16 +131,41 @@ public class FormService
                 .execute();
     }
 
-    public String complete( final String body ) throws KeyManagementException, NoSuchAlgorithmException, IOException
+    private static final String spreadsheetId = "1HEOCsUkt-5GDzT-1sHevz2YmM0nSUIpB19C0VJA2M0Q";
+    private static final String range = "Registrations!A2:E30";
+
+    public Registration complete( final String recaptcha, final String body )
+            throws KeyManagementException, NoSuchAlgorithmException, IOException
     {
         trustEveryone();
 
         final Registration registration = Bootstrap.getGson().fromJson( body, Registration.class );
 
-        // Build a new authorized API client service.
-        Sheets service = getSheetsService();
+        if ( !VerifyRecaptcha.verify( recaptcha ) )
+        {
+            return registration;
+        }
 
-        return "Done!";
+        // Build a new authorized API client service.
+        final Sheets service = getSheetsService();
+
+        final ValueRange response = service.spreadsheets().values().get( spreadsheetId, range ).execute();
+
+        final List<List<Object>> values = response.getValues() == null ? new ArrayList<>() : response.getValues();
+
+        // Add the new registration to the end
+        final List<Object> objects = new ArrayList<>();
+        objects.add( registration.getName() );
+        objects.add( registration.getBusinessName() );
+        objects.add( registration.getEmail() );
+        objects.add( registration.getMobile() );
+
+        values.add( objects );
+
+        service.spreadsheets().values().update( spreadsheetId, range, response ).setValueInputOption( "USER_ENTERED" )
+                .execute();
+
+        return registration;
     }
 
     private static void trustEveryone() throws NoSuchAlgorithmException, KeyManagementException
