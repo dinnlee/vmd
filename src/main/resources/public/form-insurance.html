@@ -1,0 +1,37 @@
+<h2>INSURANCE</h2>
+If you have insurance, please provide details of your provider for our record:
+
+<div class="form-group">
+    <label for="provider">Provider</label>
+    <input type="text" id="provider" class="form-control" ng-model="formData.insurance.provider">
+</div>
+
+<div class="form-group">
+    <label for="policy">Policy Number</label>
+    <input type="text" id="policy" class="form-control" ng-model="formData.insurance.policy">
+</div>
+
+<div class="form-group">
+    <label for="renewal">Renewal Date</label>
+    <input type="text" class="form-control" id="renewal" ng-model="formData.insurance.renewal">
+</div>
+
+<div class="form-group">
+    <label for="sum">Sum Insured</label>
+    <input type="text" class="form-control" id="sum" ng-model="formData.insurance.sumInsured">
+</div>
+
+<div class="form-group">
+    <label for="type">Insurance Type</label>
+    <input type="text" class="form-control" id="type" ng-model="formData.insurance.type">
+</div>
+
+Stall holders that do not have insurance for Valentine Market Day will not be covered by the school.
+
+<div class="form-group row">
+    <div class="col-xs-6 col-xs-offset-3">
+        <a ui-sref="form.logistics" class="btn btn-block btn-info">
+            Next <span class="glyphicon glyphicon-circle-arrow-right"></span>
+        </a>
+    </div>
+</div>

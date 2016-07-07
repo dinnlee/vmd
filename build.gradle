@@ -1,0 +1,27 @@
+group 'leed.mynetgear.com'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    maven  {
+        url "http://repo1.maven.org/maven2"
+    }
+}
+
+dependencies {
+    compile(
+            ['com.sparkjava:spark-core:2.3'],
+            ['com.google.code.gson:gson:2.2.4'],
+            ['com.google.api-client:google-api-client:1.22.0'],
+            ['com.google.oauth-client:google-oauth-client-jetty:1.22.0'],
+            ['com.google.apis:google-api-services-sheets:v4-rev9-1.22.0']
+    )
+
+    testCompile(
+            ['org.testng:testng:6.9.10'],
+            ['org.hamcrest:hamcrest-library:1.3']
+    )
+}

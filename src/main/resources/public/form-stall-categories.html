@@ -1,0 +1,90 @@
+<h3>STALL CATEGORIES</h3>
+Please tick the type of goods you will be selling (you can tick more than one):
+
+<div class="form-group">
+    <div class="checkbox">
+        <label>
+            Homemade Condiments
+            <input type="checkbox" ng-model="formData.stallCategoryCondiments" value="Homemade Condiments">
+        </label>
+    </div>
+    <div class="checkbox">
+        <label>
+            Homemade Cakes, Sweets, Cookies, etc
+            <input type="checkbox" ng-model="formData.stallCategoryCakes" value="Homemade Cakes, Sweets, Cookies, etc">
+        </label>
+    </div>
+    <div class="checkbox">
+        <label>
+            Art & Craft
+            <input type="checkbox" ng-model="formData.stallCategoryArt" value="Art & Craft">
+        </label>
+    </div>
+    <div class="checkbox">
+        <label>
+            Books
+            <input type="checkbox" ng-model="formData.stallCategoryBooks" value="Books">
+        </label>
+    </div>
+    <div class="checkbox">
+        <label>
+            Plants
+            <input type="checkbox" ng-model="formData.stallCategoryPlants" value="Plants">
+        </label>
+    </div>
+    <div class="checkbox">
+        <label>
+            Skin Care & Oils
+            <input type="checkbox" ng-model="formData.stallCategorySkinCare" value="Skin Care & Oils">
+        </label>
+    </div>
+
+    <div class="checkbox">
+        <label>
+            Other, please specify
+            <input type="text" ng-model="formData.stallCategoryOther">
+        </label>
+    </div>
+</div>
+
+<h3>Additional Categories</h3>
+<div class="alert alert-warning" role="alert">Availability is limited in the below categories.
+    Please call Kelly on 0432 444 514 to discuss.
+</div>
+
+Please tick the type of goods you will be selling (you can tick more than one):
+
+<div class="form-group">
+    <div class="checkbox">
+        <label>
+            Kids Activities
+            <input type="checkbox" ng-model="formData.stallCategoryKidsActivities" value="Homemade Condiments">
+        </label>
+    </div>
+    <div class="checkbox">
+        <label>
+            Kids Entertainment
+            <input type="checkbox" ng-model="formData.stallCategoryKidsEntertainment" value="Kids Entertainment">
+        </label>
+    </div>
+    <div class="checkbox">
+        <label>
+            Produce
+            <input type="checkbox" ng-model="formData.stallCategoryProduce" value="Produce">
+        </label>
+    </div>
+    <div class="checkbox">
+        <label>
+            Information and/or Demonstration
+            <input type="checkbox" ng-model="formData.stallCategoryInformation" value="Information">
+        </label>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-6 col-xs-offset-3">
+        <a ui-sref="form.payment" class="btn btn-block btn-info">
+            Next <span class="glyphicon glyphicon-circle-arrow-right"></span>
+        </a>
+    </div>
+</div>

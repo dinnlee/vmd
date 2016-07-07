@@ -1,0 +1,39 @@
+<label>STALL SITES 3m X 3m</label>
+
+<div class="form-group">
+    <div class="radio">
+        <label>
+            <input type="radio" ng-model="formData.stallType" value="non-business" checked>
+            $40 - Non-Business Stall Site
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" ng-model="formData.stallType" value="business">
+            $60 - Business Stall Site Only
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" ng-model="formData.stallType" value="business-donation">
+            $40 - Business Stall Site + Donated Raffle Prize (Donated raffle prize must be $20 minimum retail value)
+        </label>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="donation">Donated Raffle Prize is</label>
+    <input type="text" class="form-control" id="donation" ng-model="formData.donation">
+</div>
+
+<ul>
+    <li>If you have an ABN, you are considered to be a business owner.</li>
+    <li>Note: A small number of sites of alternative sizes are available.</li>
+</ul>
+<div class="form-group row">
+    <div class="col-xs-6 col-xs-offset-3">
+        <a ui-sref="form.stall-categories" class="btn btn-block btn-info">
+            Next <span class="glyphicon glyphicon-circle-arrow-right"></span>
+        </a>
+    </div>
+</div>
